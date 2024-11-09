@@ -1,0 +1,53 @@
+RewriteEngine On
+# RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule (.*?)/?$ $1.html [L]
+
+Redirect 301 /pl/promocje/turystyka-i-podroze/ https://checkpromo.co/pl/kupony/turystyka-i-podroze/
+Redirect 301 /pl/promocje/prezenty-i-gadzety/ https://checkpromo.co/pl/kupony/prezenty-i-gadzety/
+Redirect 301 /pl/promocje/sport-i-hobby/ https://checkpromo.co/pl/kupony/sport-i-hobby/
+Redirect 301 /pl/promocje/zdrowie-i-uroda/ https://checkpromo.co/pl/kupony/zdrowie-i-uroda/
+Redirect 301 /pl/promocje/komputery-foto-i-elektronika/ https://checkpromo.co/pl/kupony/komputery-foto-i-elektronika/
+Redirect 301 /pl/promocje/bizuteria-i-zegarki/ https://checkpromo.co/pl/kupony/bizuteria-i-zegarki/
+Redirect 301 /pl/promocje/odziez-obuwie-i-dodatki/ https://checkpromo.co/pl/kupony/odziez-obuwie-i-dodatki/
+Redirect 301 /pl/promocje/erotyka/ https://checkpromo.co/pl/kupony/erotyka/
+Redirect 301 /pl/promocje/ksiazki-filmy-gry-i-muzyka/ https://checkpromo.co/pl/kupony/ksiazki-filmy-gry-i-muzyka/
+Redirect 301 /pl/promocje/agd-i-rtv/ https://checkpromo.co/pl/kupony/agd-i-rtv/
+Redirect 301 /pl/promocje/artykuly-zoologiczne/ https://checkpromo.co/pl/kupony/artykuly-zoologiczne/
+Redirect 301 /pl/promocje/dla-dziecka/ https://checkpromo.co/pl/kupony/dla-dziecka/
+Redirect 301 /pl/promocje/dom-wnetrze-i-ogrod/ https://checkpromo.co/pl/kupony/dom-wnetrze-i-ogrod/
+Redirect 301 /pl/promocje/jedzenie/ https://checkpromo.co/pl/kupony/jedzenie/
+Redirect 301 /pl/promocje/uslugi/ https://checkpromo.co/pl/kupony/uslugi/
+Redirect 301 /pl/promocje/motoryzacja/ https://checkpromo.co/pl/kupony/motoryzacja/
+Redirect 301 /pl/promocje/artykuly-biurowe/ https://checkpromo.co/pl/kupony/artykuly-biurowe/
+Redirect 301 /pl/promocje/finanse-i-ubezpieczenia/ https://checkpromo.co/pl/kupony/finanse-i-ubezpieczenia/
+
+Redirect 301 /pl/promocje/ https://checkpromo.co/pl/kupony/
+Redirect 301 /pl/promocje/wyprzedaze/ https://checkpromo.co/pl/kupony/wyprzedaze/
+Redirect 301 /pl/promocje/oferty/ https://checkpromo.co/pl/kupony/oferty/
+Redirect 301 /pl/promocje/kody-rabatowe/ https://checkpromo.co/pl/kupony/kody-rabatowe/
+Redirect 301 /pl/promocje/darmowe-produkty/ https://checkpromo.co/pl/kupony/darmowe-produkty/
+Redirect 301 /pl/promocje/darmowa-wysylka/ https://checkpromo.co/pl/kupony/darmowa-wysylka/
+
+#Redirect 301 / https://checkpromo.co/pl/
+
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^/?$ https://checkpromo.co/pl/ [R=301,L]
+
+Header set Set-Cookie "SameSite=Strict; Secure" env=HTTPS
+Header set Connection keep-alive
+
+<FilesMatch "\.(html?|txt|css|js|php|pl|ttf)$">
+   SetOutputFilter DEFLATE
+</FilesMatch>
+
+<FilesMatch "\.html$">
+   Header set Cache-Control "max-age=31536000, must-revalidate, private, no-cache"
+</FilesMatch>
+
+<FilesMatch "\.(jpg|jpeg|png|gif|css|js|svg|webp|ttf)$">
+   Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
